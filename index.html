@@ -1,187 +1,173 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneGrain Solutions | 专业咨询与数字化转型</title>
+    <title>OneGrain Solutions | Global Expansion & Data Philosophy</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #00A3E0; /* 你的 Logo 标准蓝 */
-            --dark-bg: #0F172A;     /* 深色调，衬托科技感 */
+            --primary-blue: #00A3E0;
+            --dark-bg: #0F172A;
+            --card-bg: #1E293B;
             --text-main: #F8FAFC;
             --text-dim: #94A3B8;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--dark-bg); color: var(--text-main); line-height: 1.6; }
 
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* 导航栏 */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 8%;
-            position: absolute;
-            width: 100%;
-            z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%; background: rgba(15, 23, 42, 0.9);
+            position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(10px);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
+        .lang-switch {
+            background: transparent; border: 1px solid var(--primary-blue);
+            color: var(--primary-blue); padding: 5px 15px; border-radius: 4px;
+            cursor: pointer; font-weight: 600; transition: 0.3s;
         }
+        .lang-switch:hover { background: var(--primary-blue); color: white; }
 
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-blue);
-        }
-
-        /* Hero 核心区域 */
         .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 8%;
-            background: radial-gradient(circle at 80% 20%, rgba(0, 163, 224, 0.05) 0%, transparent 50%);
+            min-height: 80vh; display: flex; align-items: center; padding: 120px 8% 60px;
         }
+        .hero-container { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
+        .hero-text h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero-text h1 span { color: var(--primary-blue); }
+        .hero-text p { font-size: 18px; color: var(--text-dim); margin-bottom: 30px; }
 
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr; /* 左文右图比例 */
-            align-items: center;
-            gap: 60px;
-            width: 100%;
+        /* 核心业务/哲学板块 */
+        .services-section { padding: 80px 8%; background: #111827; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
         }
-
-        .hero-text h1 {
-            font-size: clamp(40px, 5vw, 64px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
+        .service-card {
+            background: var(--card-bg); padding: 40px; border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
         }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--primary-blue); }
+        .service-card h3 { color: var(--primary-blue); margin-bottom: 20px; font-size: 22px; }
 
-        .hero-text h1 span {
-            color: var(--primary-blue);
+        /* 联系方式 */
+        .contact-footer {
+            background: #0a0f1d; padding: 80px 8%; border-top: 1px solid #1e293b;
         }
-
-        .hero-text p {
-            font-size: 18px;
-            color: var(--text-dim);
-            max-width: 500px;
-            margin-bottom: 40px;
+        .contact-grid {
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;
         }
+        .contact-item h4 { color: var(--primary-blue); font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .contact-item p { font-size: 18px; font-weight: 600; }
 
-        /* 行动按钮 */
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 16px 36px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            border: 1px solid var(--primary-blue);
-        }
+        .logo-wrapper img { width: 100%; max-width: 320px; filter: drop-shadow(0 0 25px rgba(0,163,224,0.4)); }
 
-        .btn-primary:hover {
-            background-color: transparent;
-            color: var(--primary-blue);
-            transform: translateY(-5px);
-        }
-
-        /* 右侧 Logo 图片容器 */
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Logo 呼吸动画及装饰 */
-        .logo-wrapper {
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo-wrapper img {
-            width: 100%;
-            max-width: 350px; /* Logo 尺寸控制 */
-            filter: drop-shadow(0 0 30px rgba(0, 163, 224, 0.2));
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* 移动端适配 */
         @media (max-width: 968px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding-top: 100px;
-            }
-            .hero-text p {
-                margin: 0 auto 40px;
-            }
-            .nav-links {
-                display: none; /* 手机端隐藏导航，实际可改为汉堡菜单 */
-            }
-            .logo-wrapper img {
-                max-width: 200px;
-            }
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .contact-grid { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div style="font-size: 20px; font-weight: 800; letter-spacing: 2px;">ONEGRAIN</div>
-        <div class="nav-links">
-            <a href="#">Services</a>
-            <a href="#">Insights</a>
-            <a href="#">Contact</a>
-        </div>
+        <div style="font-weight: 800; font-size: 22px; letter-spacing: 1px;">ONEGRAIN</div>
+        <button class="lang-switch" onclick="toggleLang()">中文 / EN</button>
     </nav>
 
     <section class="hero">
         <div class="hero-container">
             <div class="hero-text">
-                <h1>每一粒数据<br>皆是<span>增长先机</span></h1>
-                <p>OneGrain Solutions 为您提供数据驱动的深度咨询，助力企业在变幻的市场中捕捉最精准的价值点。</p>
-                <a href="mailto:nanwu@onegrain.ca" class="btn-primary">开启咨询会话</a>
+                <h1 id="hero-title">Every Grain of Data is a <span>Global Strategy</span></h1>
+                <p id="hero-desc">Guided by our 'Data Grain Philosophy', we empower enterprises to navigate global waters with precision and strategic depth.</p>
+                <a href="mailto:nanwu@onegrain.ca" class="btn-primary" style="display:inline-block; background:var(--primary-blue); color:white; padding:16px 32px; border-radius:4px; text-decoration:none; font-weight:600;">Contact Consultant</a>
             </div>
-
             <div class="hero-image">
                 <div class="logo-wrapper">
-                    <img src="https://i.postimg.cc/T3m8M9m0/image-f98f13.png" alt="OneGrain Logo">
+                    <img src="https://i.postimg.cc/T3m8M9m0/image-f98f13.png" alt="Logo">
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="services-section">
+        <div class="section-header">
+            <h2 id="sec-title" style="font-size: 36px;">Our Philosophy & Expertise</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3 id="s1-t">Data Grain Philosophy</h3>
+                <p id="s1-d">We believe the most profound insights are hidden in the smallest details. By meticulously analyzing every 'grain' of data, we build robust global strategies.</p>
+            </div>
+            <div class="service-card">
+                <h3 id="s2-t">Global Expansion</h3>
+                <p id="s2-d">Expert consulting for North American and Asian markets, bridging the gap with localized strategies and deep regulatory understanding.</p>
+            </div>
+            <div class="service-card">
+                <h3 id="s3-t">Strategic Consulting</h3>
+                <p id="s3-d">From market entry to operational optimization, we provide end-to-end support for your international business journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="contact-footer">
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h4 id="c-email">Official Email</h4>
+                <p>nanwu@onegrain.ca</p>
+            </div>
+            <div class="contact-item">
+                <h4 id="c-phone-ca">Canada Office</h4>
+                <p>+1 (587) 215-8008</p>
+            </div>
+            <div class="contact-item">
+                <h4 id="c-phone-cn">China Liaison</h4>
+                <p>+86 150-0224-9572</p>
+            </div>
+            <div class="contact-item">
+                <h4 id="c-web">Web</h4>
+                <p>www.onegrain.ca</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+        const content = {
+            en: {
+                title: "Every Grain of Data is a <span>Global Strategy</span>",
+                desc: "Guided by our 'Data Grain Philosophy', we empower enterprises to navigate global waters with precision and strategic depth.",
+                sec: "Our Philosophy & Expertise",
+                s1t: "Data Grain Philosophy", s1d: "We believe the most profound insights are hidden in the smallest details. Meticulous analysis for robust strategies.",
+                s2t: "Global Expansion", s2d: "Expert consulting for North American and Asian markets, bridging the gap with localized strategies.",
+                s3t: "Strategic Consulting", s3d: "From market entry to operational optimization, end-to-end support for your journey.",
+                email: "Official Email", phone_ca: "Canada Office", phone_cn: "China Liaison"
+            },
+            zh: {
+                title: "每一粒数据，皆是<span>出海胜策</span>",
+                desc: "秉承“数据颗粒哲学”，我们助力企业在国际化浪潮中精准导航，构建具有战略深度的全球化蓝图。",
+                sec: "品牌哲学与核心业务",
+                s1t: "数据颗粒哲学", s1d: "我们相信最深刻的洞察隐藏在最微小的细节中。通过对每一粒数据的极致分析，构建稳健的全球战略。",
+                s2t: "企业出海咨询", s2d: "深耕北美与亚洲市场，通过本土化策略与深度的行业认知，为企业搭建跨国增长的桥梁。",
+                s3t: "全方位战略顾问", s3d: "从市场准入到运营优化，为您的国际化征程提供全生命周期的深度支持。",
+                email: "官方邮箱", phone_ca: "加拿大办公室", phone_cn: "中国联络点"
+            }
+        };
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            const data = content[currentLang];
+            document.getElementById('hero-title').innerHTML = data.title;
+            document.getElementById('hero-desc').innerText = data.desc;
+            document.getElementById('sec-title').innerText = data.sec;
+            document.getElementById('s1-t').innerText = data.s1t; document.getElementById('s1-d').innerText = data.s1d;
+            document.getElementById('s2-t').innerText = data.s2t; document.getElementById('s2-d').innerText = data.s2d;
+            document.getElementById('s3-t').innerText = data.s3t; document.getElementById('s3-d').innerText = data.s3d;
+            document.getElementById('c-email').innerText = data.email;
+            document.getElementById('c-phone-ca').innerText = data.phone_ca;
+            document.getElementById('c-phone-cn').innerText = data.phone_cn;
+        }
+    </script>
 </body>
 </html>
