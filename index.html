@@ -3,272 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneGrain Solutions</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>OneGrain Solutions | Global Strategic Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-navy: #0A192F;
-            --accent-silver: #E6E6E6;
-            --text-light: #F8F9FA;
-            --text-muted: #A8B2D1;
-            --highlight-gold: #D4AF37;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-        }
-
-        /* 导航栏 */
-        nav {
-            padding: 1.5rem 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        /* 这里控制你的Logo大小，防止图片太大撑破导航栏 */
-        .logo-img {
-            height: 50px; /* 默认高度，可根据你的图片调整 */
-            width: auto;
-            margin-right: 15px;
-        }
-
-        .lang-switch {
-            cursor: pointer;
-            border: 1px solid var(--text-muted);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .lang-switch:hover {
-            background-color: var(--text-light);
-            color: var(--primary-navy);
-        }
-
-        /* 主体内容 */
-        header {
-            min-height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 4rem 10%;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            max-width: 900px;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        p.tagline {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin-bottom: 2.5rem;
-        }
-
-        /* 核心优势卡片 */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 4rem 10%;
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .card {
-            padding: 2rem;
-            border-left: 2px solid var(--highlight-gold);
-            background: rgba(255, 255, 255, 0.03);
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--text-light);
-            font-size: 1.3rem;
-        }
-
-        /* 页脚 */
-        footer {
-            padding: 4rem 10%;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .address-block h4, .contact-info h4 {
-            color: var(--text-light);
-            margin-top: 0;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-
-        .contact-item {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-label {
-            width: 80px;
-            display: inline-block;
-            color: var(--accent-silver);
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-            nav { padding: 1rem 5%; }
-            header, .services, footer { padding-left: 5%; padding-right: 5%; }
-        }
+        body { background-color: #030712; color: #f3f4f6; font-family: 'Space Grotesk', sans-serif; scroll-behavior: smooth; }
+        .grain-gradient { background: linear-gradient(135deg, #60a5fa 0%, #2dd4bf 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-blur { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .card-blur:hover { transform: translateY(-5px); border-color: rgba(45, 212, 191, 0.4); }
+        /* Logo大小控制 */
+        .logo-container img { height: 48px; width: auto; filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.2)); }
     </style>
 </head>
 <body>
-
-    <nav>
-        <div class="logo-container">
-            <img src="logo.png" alt="OneGrain Solutions" class="logo-img">
+    <nav class="p-8 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="flex items-center gap-4 logo-container">
+            <img src="logo.png" alt="OneGrain Logo">
+            <div class="text-2xl font-bold tracking-tighter text-white uppercase">OneGrain</div>
         </div>
-        <div class="lang-switch" onclick="toggleLanguage()" id="langBtn">CN</div>
+        <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest text-gray-400 font-medium">
+            <a href="#solutions" class="hover:text-white transition">Solutions</a>
+            <a href="mailto:nanwu@onegrain.ca" class="hover:text-white transition text-teal-400">nanwu@onegrain.ca</a>
+        </div>
     </nav>
 
-    <header>
-        <h1 id="hero-title">Bridge Excellence, <br>Global Resilience.</h1>
-        <p class="tagline" id="hero-tagline">Providing end-to-end technology solutions and regulatory compliance consulting for high-growth enterprises in Canada and beyond.</p>
+    <header class="min-h-[80vh] flex flex-col justify-center items-center text-center px-6">
+        <div class="inline-block px-4 py-1 mb-6 rounded-full border border-teal-500/30 text-teal-400 text-xs tracking-widest uppercase">Precision in Every Decision</div>
+        <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">Small <span class="grain-gradient">Grains</span>,<br>Global <span class="grain-gradient">Gains</span>.</h1>
+        <p class="text-gray-400 max-w-3xl text-lg md:text-xl leading-relaxed mb-12 italic">"OneGrain reflects our belief that global success is built upon microscopic precision. We navigate cross-border complexities with the same care that transforms a single grain into a harvest."</p>
+        
+        <div class="flex flex-col md:flex-row gap-6 mb-12">
+            <div class="card-blur px-6 py-4 rounded-2xl">
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Canada</p>
+                <p class="font-bold">+1 (587) 215-8008</p>
+            </div>
+            <div class="card-blur px-6 py-4 rounded-2xl">
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">China</p>
+                <p class="font-bold">+86 150 0224 9572</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6">
+            <a href="#solutions" class="bg-teal-500 hover:bg-teal-400 text-black px-10 py-4 rounded-xl font-bold transition text-center shadow-lg shadow-teal-500/20">Explore Solutions</a>
+            <a href="mailto:nanwu@onegrain.ca" class="card-blur px-10 py-4 rounded-xl font-bold hover:bg-white/5 transition text-center">Inquire Now</a>
+        </div>
     </header>
 
-    <section class="services">
-        <div class="card">
-            <h3 id="serv-1-title">Cross-border R&D</h3>
-            <p id="serv-1-desc">Strategic offshore development management and technical risk assessment for seamless global operations.</p>
+    <section id="solutions" class="py-32 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl font-bold mb-4 text-white">Our <span class="grain-gradient">Solutions</span></h2>
+            <div class="h-1 w-20 bg-teal-500 mx-auto rounded-full"></div>
         </div>
-        <div class="card">
-            <h3 id="serv-2-title">Compliance First</h3>
-            <p id="serv-2-desc">Deep expertise in SR&ED tax incentives and local regulatory frameworks to maximize your business potential.</p>
-        </div>
-        <div class="card">
-            <h3 id="serv-3-title">Business Growth</h3>
-            <p id="serv-3-desc">Infrastructure setup and operational advisory tailored for multinational ventures landing in North America.</p>
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="card-blur p-10 rounded-3xl">
+                <div class="w-14 h-14 bg-teal-500/10 rounded-2xl mb-8 flex items-center justify-center text-3xl">🚀</div>
+                <h3 class="text-2xl font-bold mb-4 text-white">Strategic Navigation</h3>
+                <p class="text-gray-400 leading-relaxed text-sm">Expert guidance on North American market entry, regulatory compliance, and localized operational strategies.</p>
+            </div>
+            <div class="card-blur p-10 rounded-3xl">
+                <div class="w-14 h-14 bg-blue-500/10 rounded-2xl mb-8 flex items-center justify-center text-3xl">🌐</div>
+                <h3 class="text-2xl font-bold mb-4 text-white">Global Expansion</h3>
+                <p class="text-gray-400 leading-relaxed text-sm">Facilitating end-to-end entity structuring and strategic matchmaking to ensure seamless cross-border integration.</p>
+            </div>
+            <div class="card-blur p-10 rounded-3xl">
+                <div class="w-14 h-14 bg-purple-500/10 rounded-2xl mb-8 flex items-center justify-center text-3xl">📈</div>
+                <h3 class="text-2xl font-bold mb-4 text-white">Invest Intelligence</h3>
+                <p class="text-gray-400 leading-relaxed text-sm">Precision-driven technical due diligence and asset allocation advice based on microscopic data analysis.</p>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-grid">
-            <div class="address-block">
-                <h4 id="addr-title">Vancouver HQ</h4>
-                <div style="line-height: 1.8;">
-                    <strong>OneGrain Solutions Inc.</strong><br>
-                    422 Richards St, Suite 170<br>
-                    Vancouver, BC V6B 2Z4<br>
-                    Canada
-                </div>
-            </div>
-            <div class="contact-info">
-                <h4 id="contact-title">Contact Us</h4>
-                <div class="contact-item">
-                    <span class="contact-label">Email:</span> 
-                    <a href="mailto:nanwu@onegrain.ca" style="color:white; text-decoration:none;">nanwu@onegrain.ca</a>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">CA:</span> +1 587-215-8008
-                </div>
-                <div class="contact-item">
-                    <span class="contact-label">CN:</span> +86 150-0224-9572
-                </div>
-            </div>
+    <footer class="py-16 border-t border-white/5 text-center text-gray-500">
+        <div class="flex justify-center items-center gap-3 mb-8 opacity-90">
+            <img src="logo.png" alt="OneGrain Logo" class="h-8 w-auto">
+            <span class="font-bold tracking-widest text-lg uppercase text-white">OneGrain Solutions</span>
         </div>
-        <div style="margin-top: 3rem; font-size: 0.8rem; opacity: 0.6;">
-            &copy; 2026 OneGrain Solutions Inc. All rights reserved.
+        
+        <div class="mb-10 text-gray-400">
+            <p class="font-medium text-white mb-2">Vancouver HQ</p>
+            <p class="leading-relaxed">422 Richards St, Suite 170<br>Vancouver, BC V6B 2Z4<br>Canada</p>
         </div>
+
+        <p class="text-xs tracking-wide mb-2 uppercase opacity-50">Vancouver · Tianjin</p>
+        <p class="text-[10px] opacity-30 uppercase tracking-[0.2em]">© 2026 ONEGRAIN. All rights reserved.</p>
     </footer>
-
-    <script>
-        // 当前语言状态，默认英语
-        let currentLang = 'en';
-
-        // 语言包字典
-        const translations = {
-            'en': {
-                'hero-title': 'Bridge Excellence, <br>Global Resilience.',
-                'hero-tagline': 'Providing end-to-end technology solutions and regulatory compliance consulting for high-growth enterprises in Canada and beyond.',
-                'serv-1-title': 'Cross-border R&D',
-                'serv-1-desc': 'Strategic offshore development management and technical risk assessment for seamless global operations.',
-                'serv-2-title': 'Compliance First',
-                'serv-2-desc': 'Deep expertise in SR&ED tax incentives and local regulatory frameworks to maximize your business potential.',
-                'serv-3-title': 'Business Growth',
-                'serv-3-desc': 'Infrastructure setup and operational advisory tailored for multinational ventures landing in North America.',
-                'addr-title': 'Vancouver HQ',
-                'contact-title': 'Contact Us',
-                'btn-text': 'CN' // 按钮显示的是“去中文版”
-            },
-            'cn': {
-                'hero-title': '连接卓越，<br>韧性全球。',
-                'hero-tagline': '为高速成长的跨国企业提供端到端技术解决方案与合规咨询，助力北美市场落地与发展。',
-                'serv-1-title': '跨境研发管理',
-                'serv-1-desc': '提供战略性的离岸开发管理与技术风险评估，确保全球化运营无缝衔接。',
-                'serv-2-title': '合规与税务',
-                'serv-2-desc': '深耕 SR&ED 税务激励与本地监管框架，最大化您的商业潜力与合规收益。',
-                'serv-3-title': '商业增长',
-                'serv-3-desc': '专为登陆北美的跨国企业量身定制的基础设施搭建与运营咨询服务。',
-                'addr-title': '温哥华总部',
-                'contact-title': '联系方式',
-                'btn-text': 'EN' // 按钮显示的是“去英文版”
-            }
-        };
-
-        function toggleLanguage() {
-            // 切换状态
-            currentLang = currentLang === 'en' ? 'cn' : 'en';
-            
-            // 获取对应语言包
-            const t = translations[currentLang];
-
-            // 更新页面文本
-            document.getElementById('hero-title').innerHTML = t['hero-title'];
-            document.getElementById('hero-tagline').textContent = t['hero-tagline'];
-            
-            document.getElementById('serv-1-title').textContent = t['serv-1-title'];
-            document.getElementById('serv-1-desc').textContent = t['serv-1-desc'];
-            
-            document.getElementById('serv-2-title').textContent = t['serv-2-title'];
-            document.getElementById('serv-2-desc').textContent = t['serv-2-desc'];
-            
-            document.getElementById('serv-3-title').textContent = t['serv-3-title'];
-            document.getElementById('serv-3-desc').textContent = t['serv-3-desc'];
-
-            document.getElementById('addr-title').textContent = t['addr-title'];
-            document.getElementById('contact-title').textContent = t['contact-title'];
-            
-            document.getElementById('langBtn').textContent = t['btn-text'];
-        }
-    </script>
 </body>
 </html>
