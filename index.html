@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneGrain Solutions | Global Tech & Compliance</title>
+    <title>OneGrain Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -11,6 +11,7 @@
             --accent-silver: #E6E6E6;
             --text-light: #F8F9FA;
             --text-muted: #A8B2D1;
+            --highlight-gold: #D4AF37;
         }
 
         body {
@@ -24,135 +25,250 @@
 
         /* 导航栏 */
         nav {
-            padding: 2rem 10%;
+            padding: 1.5rem 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .logo {
-            font-weight: 600;
-            font-size: 1.5rem;
-            letter-spacing: -0.5px;
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        /* 这里控制你的Logo大小，防止图片太大撑破导航栏 */
+        .logo-img {
+            height: 50px; /* 默认高度，可根据你的图片调整 */
+            width: auto;
+            margin-right: 15px;
+        }
+
+        .lang-switch {
+            cursor: pointer;
+            border: 1px solid var(--text-muted);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-switch:hover {
+            background-color: var(--text-light);
+            color: var(--primary-navy);
         }
 
         /* 主体内容 */
         header {
-            height: 70vh;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 0 10%;
+            padding: 4rem 10%;
         }
 
         h1 {
             font-size: 3.5rem;
-            max-width: 800px;
+            max-width: 900px;
             margin-bottom: 1.5rem;
             font-weight: 600;
+            line-height: 1.2;
         }
 
         p.tagline {
             font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 700px;
             margin-bottom: 2.5rem;
         }
 
         /* 核心优势卡片 */
         .services {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             padding: 4rem 10%;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .card {
             padding: 2rem;
-            border-left: 1px solid var(--text-muted);
+            border-left: 2px solid var(--highlight-gold);
+            background: rgba(255, 255, 255, 0.03);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .card h3 {
             margin-top: 0;
-            color: var(--accent-silver);
+            color: var(--text-light);
+            font-size: 1.3rem;
         }
 
-        /* 页脚 - 包含你的精准地址 */
+        /* 页脚 */
         footer {
             padding: 4rem 10%;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
         }
 
-        .address-block {
-            line-height: 1.8;
-        }
-
-        .contact-info {
-            text-align: right;
-        }
-
-        .highlight {
+        .address-block h4, .contact-info h4 {
             color: var(--text-light);
-            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .contact-item {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-label {
+            width: 80px;
+            display: inline-block;
+            color: var(--accent-silver);
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .contact-info { text-align: left; }
+            h1 { font-size: 2.2rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            nav { padding: 1rem 5%; }
+            header, .services, footer { padding-left: 5%; padding-right: 5%; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">OneGrain Solutions</div>
-        <div>Tech | Compliance | Growth</div>
+        <div class="logo-container">
+            <img src="logo.png" alt="OneGrain Solutions" class="logo-img">
+        </div>
+        <div class="lang-switch" onclick="toggleLanguage()" id="langBtn">CN</div>
     </nav>
 
     <header>
-        <h1>Bridge Excellence, <br>Global Resilience.</h1>
-        <p class="tagline">Providing end-to-end technology solutions and regulatory compliance consulting for high-growth enterprises in Canada and beyond.</p>
+        <h1 id="hero-title">Bridge Excellence, <br>Global Resilience.</h1>
+        <p class="tagline" id="hero-tagline">Providing end-to-end technology solutions and regulatory compliance consulting for high-growth enterprises in Canada and beyond.</p>
     </header>
 
     <section class="services">
         <div class="card">
-            <h3>Cross-border R&D</h3>
-            <p>Strategic offshore development management and technical risk assessment.</p>
+            <h3 id="serv-1-title">Cross-border R&D</h3>
+            <p id="serv-1-desc">Strategic offshore development management and technical risk assessment for seamless global operations.</p>
         </div>
         <div class="card">
-            <h3>Compliance First</h3>
-            <p>Deep expertise in SR&ED tax incentives and local regulatory frameworks.</p>
+            <h3 id="serv-2-title">Compliance First</h3>
+            <p id="serv-2-desc">Deep expertise in SR&ED tax incentives and local regulatory frameworks to maximize your business potential.</p>
         </div>
         <div class="card">
-            <h3>Business Growth</h3>
-            <p>Infrastructure setup and operational advisory for multinational ventures.</p>
+            <h3 id="serv-3-title">Business Growth</h3>
+            <p id="serv-3-desc">Infrastructure setup and operational advisory tailored for multinational ventures landing in North America.</p>
         </div>
     </section>
 
     <footer>
         <div class="footer-grid">
             <div class="address-block">
-                <span class="highlight">OneGrain Solutions Inc.</span><br>
-                422 Richards St, Suite 170<br>
-                Vancouver, BC V6B 2Z4<br>
-                Canada
+                <h4 id="addr-title">Vancouver HQ</h4>
+                <div style="line-height: 1.8;">
+                    <strong>OneGrain Solutions Inc.</strong><br>
+                    422 Richards St, Suite 170<br>
+                    Vancouver, BC V6B 2Z4<br>
+                    Canada
+                </div>
             </div>
             <div class="contact-info">
-                Email: info@onegrainsolutions.com<br>
-                Office: +1 (778) [Your-Phone]
+                <h4 id="contact-title">Contact Us</h4>
+                <div class="contact-item">
+                    <span class="contact-label">Email:</span> 
+                    <a href="mailto:nanwu@onegrain.ca" style="color:white; text-decoration:none;">nanwu@onegrain.ca</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">CA:</span> +1 587-215-8008
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">CN:</span> +86 150-0224-9572
+                </div>
             </div>
+        </div>
+        <div style="margin-top: 3rem; font-size: 0.8rem; opacity: 0.6;">
+            &copy; 2026 OneGrain Solutions Inc. All rights reserved.
         </div>
     </footer>
 
+    <script>
+        // 当前语言状态，默认英语
+        let currentLang = 'en';
+
+        // 语言包字典
+        const translations = {
+            'en': {
+                'hero-title': 'Bridge Excellence, <br>Global Resilience.',
+                'hero-tagline': 'Providing end-to-end technology solutions and regulatory compliance consulting for high-growth enterprises in Canada and beyond.',
+                'serv-1-title': 'Cross-border R&D',
+                'serv-1-desc': 'Strategic offshore development management and technical risk assessment for seamless global operations.',
+                'serv-2-title': 'Compliance First',
+                'serv-2-desc': 'Deep expertise in SR&ED tax incentives and local regulatory frameworks to maximize your business potential.',
+                'serv-3-title': 'Business Growth',
+                'serv-3-desc': 'Infrastructure setup and operational advisory tailored for multinational ventures landing in North America.',
+                'addr-title': 'Vancouver HQ',
+                'contact-title': 'Contact Us',
+                'btn-text': 'CN' // 按钮显示的是“去中文版”
+            },
+            'cn': {
+                'hero-title': '连接卓越，<br>韧性全球。',
+                'hero-tagline': '为高速成长的跨国企业提供端到端技术解决方案与合规咨询，助力北美市场落地与发展。',
+                'serv-1-title': '跨境研发管理',
+                'serv-1-desc': '提供战略性的离岸开发管理与技术风险评估，确保全球化运营无缝衔接。',
+                'serv-2-title': '合规与税务',
+                'serv-2-desc': '深耕 SR&ED 税务激励与本地监管框架，最大化您的商业潜力与合规收益。',
+                'serv-3-title': '商业增长',
+                'serv-3-desc': '专为登陆北美的跨国企业量身定制的基础设施搭建与运营咨询服务。',
+                'addr-title': '温哥华总部',
+                'contact-title': '联系方式',
+                'btn-text': 'EN' // 按钮显示的是“去英文版”
+            }
+        };
+
+        function toggleLanguage() {
+            // 切换状态
+            currentLang = currentLang === 'en' ? 'cn' : 'en';
+            
+            // 获取对应语言包
+            const t = translations[currentLang];
+
+            // 更新页面文本
+            document.getElementById('hero-title').innerHTML = t['hero-title'];
+            document.getElementById('hero-tagline').textContent = t['hero-tagline'];
+            
+            document.getElementById('serv-1-title').textContent = t['serv-1-title'];
+            document.getElementById('serv-1-desc').textContent = t['serv-1-desc'];
+            
+            document.getElementById('serv-2-title').textContent = t['serv-2-title'];
+            document.getElementById('serv-2-desc').textContent = t['serv-2-desc'];
+            
+            document.getElementById('serv-3-title').textContent = t['serv-3-title'];
+            document.getElementById('serv-3-desc').textContent = t['serv-3-desc'];
+
+            document.getElementById('addr-title').textContent = t['addr-title'];
+            document.getElementById('contact-title').textContent = t['contact-title'];
+            
+            document.getElementById('langBtn').textContent = t['btn-text'];
+        }
+    </script>
 </body>
 </html>
