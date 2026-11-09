@@ -1,181 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneGrain Solutions | Global Strategic Consulting</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-    <style>
-        body { background-color: #030712; color: #f3f4f6; font-family: 'Space Grotesk', sans-serif; scroll-behavior: smooth; }
-        .grain-gradient { background: linear-gradient(135deg, #60a5fa 0%, #2dd4bf 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .card-blur { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
-        .card-blur:hover { transform: translateY(-5px); border-color: rgba(45, 212, 191, 0.4); }
-        .logo-container img { height: 48px; width: auto; filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.2)); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneGrain Solutions | Canada–China Trade Bridge</title>
+<meta name="description" content="OneGrain connects businesses in Canada and China — trade in both directions. We introduce, verify and coordinate trade, commission-only.">
+<style>
+  :root{
+    --bg:#0a1628; --bg2:#0d1f3c; --card:#12263f; --line:#1e3a5f;
+    --text:#e8eef4; --muted:#9fb3c8; --teal:#2dd4bf; --blue:#38bdf8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6}
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{position:sticky;top:0;background:rgba(10,22,40,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;letter-spacing:.14em;font-size:18px;color:#fff;display:flex;align-items:center}
+  .logo img{height:32px;width:auto;margin-right:10px}
+  .logo span{background:linear-gradient(90deg,var(--teal),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav-links{display:flex;align-items:center;gap:28px;font-size:14px;letter-spacing:.08em}
+  .nav-links a{color:var(--text)}
+  .lang-toggle{display:flex;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  .lang-toggle button{background:transparent;border:0;color:var(--muted);padding:6px 14px;cursor:pointer;font-size:13px}
+  .lang-toggle button.active{background:linear-gradient(90deg,var(--teal),var(--blue));color:#06202a;font-weight:700}
+  .hero{padding:96px 0 72px;text-align:center}
+  .eyebrow{letter-spacing:.28em;font-size:13px;color:var(--teal);text-transform:uppercase;margin-bottom:20px}
+  h1{font-size:52px;line-height:1.15;margin-bottom:24px}
+  h1 span{background:linear-gradient(90deg,var(--teal),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{max-width:680px;margin:0 auto 36px;color:var(--muted);font-size:18px}
+  .btn{display:inline-block;padding:13px 28px;border-radius:8px;font-weight:700;font-size:15px;margin:0 8px}
+  .btn-primary{background:linear-gradient(90deg,var(--teal),var(--blue));color:#06202a}
+  .btn-primary:hover{text-decoration:none;opacity:.92}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}
+  .btn-ghost:hover{text-decoration:none;border-color:var(--teal)}
+  section{padding:72px 0}
+  section.alt{background:var(--bg2)}
+  h2{font-size:32px;margin-bottom:12px;text-align:center}
+  .sub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 48px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px}
+  .card h3{font-size:20px;margin-bottom:10px}
+  .card p{color:var(--muted)}
+  .dir-tag{font-size:13px;letter-spacing:.12em;color:var(--teal);text-transform:uppercase;margin-bottom:8px}
+  .split{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:36px}
+  .panel h3{font-size:24px;margin-bottom:12px}
+  .panel p.lead{color:var(--muted);margin-bottom:20px}
+  .panel ul{list-style:none}
+  .panel li{padding:9px 0 9px 28px;position:relative;border-top:1px solid var(--line)}
+  .panel li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:700}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:28px}
+  .chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:10px 22px;font-size:15px}
+  .center{text-align:center}
+  .center p{color:var(--muted);max-width:680px;margin:0 auto}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;counter-reset:step}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px;position:relative}
+  .step .num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--blue));color:#06202a;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:16px}
+  .step h3{font-size:20px;margin-bottom:10px}
+  .step p{color:var(--muted)}
+  .about p{max-width:760px;margin:0 auto;text-align:center;color:var(--muted);font-size:18px}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:8px}
+  .contact-item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px;text-align:center}
+  .contact-item .label{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .contact-item .value{font-size:17px;font-weight:600;word-break:break-word}
+  footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--muted);font-size:14px}
+  footer .fbrand{color:#fff;font-weight:800;letter-spacing:.14em;margin-bottom:6px}
+  @media (max-width:640px){h1{font-size:36px}.hero{padding:64px 0 48px}section{padding:52px 0}.nav-links{gap:16px}}
+</style>
 </head>
-
 <body>
-
-<nav class="p-8 flex justify-between items-center max-w-7xl mx-auto">
-    <div class="flex items-center gap-4 logo-container">
-        <img src="logo.png" alt="OneGrain Logo">
-        <div class="text-2xl font-bold tracking-tighter text-white uppercase">OneGrain</div>
+<header>
+  <div class="wrap nav">
+    <div class="logo"><img src="logo.png" alt="OneGrain Logo">ONE<span>GRAIN</span></div>
+    <div class="nav-links">
+      <a href="#solutions" data-en="SOLUTIONS" data-zh="业务">SOLUTIONS</a>
+      <a href="#contact" data-en="CONTACT" data-zh="联系">CONTACT</a>
+      <div class="lang-toggle">
+        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="btn-zh" onclick="setLang('zh')">中文</button>
+      </div>
     </div>
-    <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest text-gray-400 font-medium">
-        <a href="#solutions" class="hover:text-white transition">Solutions</a>
-        <a href="#contact" class="hover:text-white transition">Contact</a>
-    </div>
-</nav>
-
-<header class="min-h-[70vh] flex flex-col justify-center items-center text-center px-6">
-    <div class="inline-block px-4 py-1 mb-6 rounded-full border border-teal-500/30 text-teal-400 text-xs tracking-widest uppercase">
-        Precision in Every Decision
-    </div>
-
-    <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-        Small <span class="grain-gradient">Grains</span>,<br>
-        Global <span class="grain-gradient">Gains</span>.
-    </h1>
-
-    <p class="text-gray-400 max-w-3xl text-lg md:text-xl leading-relaxed mb-12 italic">
-        "OneGrain reflects our belief that global success is built upon microscopic precision. We navigate cross-border complexities with structured thinking and long-term perspective."
-    </p>
-
-    <div class="flex flex-col md:flex-row gap-6">
-        <a href="#solutions" class="bg-teal-500 hover:bg-teal-400 text-black px-10 py-4 rounded-xl font-bold transition text-center shadow-lg shadow-teal-500/20">
-            Explore Solutions
-        </a>
-        <a href="#contact" class="card-blur px-10 py-4 rounded-xl font-bold hover:bg-white/5 transition text-center">
-            Inquire Now
-        </a>
-    </div>
+  </div>
 </header>
 
-<!-- ================= ORIGINAL SOLUTIONS ================= -->
-<section id="solutions" class="py-32 max-w-7xl mx-auto px-6">
-
-    <div class="text-center mb-20">
-        <h2 class="text-4xl font-bold mb-4 text-white">
-            Our <span class="grain-gradient">Solutions</span>
-        </h2>
-        <div class="h-1 w-20 bg-teal-500 mx-auto rounded-full"></div>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-10">
-
-        <div class="card-blur p-10 rounded-3xl">
-            <div class="w-14 h-14 bg-teal-500/10 rounded-2xl mb-8 flex items-center justify-center text-3xl">🚀</div>
-            <h3 class="text-2xl font-bold mb-4 text-white">Strategic Navigation</h3>
-            <p class="text-gray-400 leading-relaxed text-sm">
-                Cross-border market understanding, regulatory awareness, and structured decision frameworks.
-            </p>
-        </div>
-
-        <div class="card-blur p-10 rounded-3xl">
-            <div class="w-14 h-14 bg-blue-500/10 rounded-2xl mb-8 flex items-center justify-center text-3xl">🌐</div>
-            <h3 class="text-2xl font-bold mb-4 text-white">Global Expansion</h3>
-            <p class="text-gray-400 leading-relaxed text-sm">
-                Insights into international business environments and operational adaptation across regions.
-            </p>
-        </div>
-
-        <div class="card-blur p-10 rounded-3xl">
-            <div class="w-14 h-14 bg-purple-500/10 rounded-2xl mb-8 flex items-center justify-center text-3xl">📈</div>
-            <h3 class="text-2xl font-bold mb-4 text-white">Investment Intelligence</h3>
-            <p class="text-gray-400 leading-relaxed text-sm">
-                Analytical approach to data interpretation and long-term financial perspective.
-            </p>
-        </div>
-
-    </div>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Small Grains, Global Gains.</div>
+    <h1><span data-en="The Bridge Between Canada and China" data-zh="中加贸易的桥梁">The Bridge Between Canada and China</span></h1>
+    <p data-en="OneGrain connects businesses in Canada and China — in both directions. We introduce, verify and coordinate trade, commission-only, no upfront cost." data-zh="OneGrain 连接加拿大与中国的企业，双向贸易。我们负责介绍、核实与协调，按单抽佣，没有前期费用。">OneGrain connects businesses in Canada and China — in both directions. We introduce, verify and coordinate trade, commission-only, no upfront cost.</p>
+    <a class="btn btn-primary" href="#solutions" data-en="Explore Solutions" data-zh="了解业务">Explore Solutions</a>
+    <a class="btn btn-ghost" href="#contact" data-en="Inquire Now" data-zh="联系我们">Inquire Now</a>
+  </div>
 </section>
 
-<!-- ================= NEW EDUCATION MODULE (ILAC SAFE VERSION) ================= -->
-<section class="py-32 max-w-7xl mx-auto px-6">
-
-    <div class="text-center mb-20">
-        <h2 class="text-4xl font-bold mb-4 text-white">
-            Education & <span class="grain-gradient">Student Mobility Interest</span>
-        </h2>
-        <div class="h-1 w-20 bg-teal-500 mx-auto rounded-full"></div>
-
-        <p class="text-gray-500 mt-6 text-sm max-w-2xl mx-auto">
-            OneGrain maintains an exploratory interest in global education systems and international learning pathways.
-        </p>
+<section>
+  <div class="wrap">
+    <h2 data-en="Trade in Both Directions" data-zh="双向贸易">Trade in Both Directions</h2>
+    <p class="sub" data-en="One company, two directions — the bridge works both ways." data-zh="一家公司，两个方向——桥梁双向流通。">One company, two directions — the bridge works both ways.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="dir-tag">Canada → China</div>
+        <h3 data-en="Canada → China" data-zh="加拿大 → 中国">Canada → China</h3>
+        <p data-en="Canadian products — agri-food, health products, wine and specialty foods — introduced to buyers in China." data-zh="把加拿大的农产品、保健品、酒类和特色食品，介绍给中国的买家。">Canadian products — agri-food, health products, wine and specialty foods — introduced to buyers in China.</p>
+      </div>
+      <div class="card">
+        <div class="dir-tag">China → Canada</div>
+        <h3 data-en="China → Canada" data-zh="中国 → 加拿大">China → Canada</h3>
+        <p data-en="Chinese products introduced to Canadian distributors, retailers and buyers — with local landing support in Canada." data-zh="把中国的产品介绍给加拿大的经销商、零售商和买家，并在加拿大本地提供落地支持。">Chinese products introduced to Canadian distributors, retailers and buyers — with local landing support in Canada.</p>
+      </div>
     </div>
-
-    <div class="grid md:grid-cols-3 gap-10">
-
-        <div class="card-blur p-10 rounded-3xl">
-            <h3 class="text-xl font-bold mb-4 text-white">🌍 Education Systems</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">
-                Observing how global education institutions structure language learning and academic preparation pathways.
-            </p>
-        </div>
-
-        <div class="card-blur p-10 rounded-3xl">
-            <h3 class="text-xl font-bold mb-4 text-white">📚 Language Learning</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">
-                Understanding the role of English language training in international communication and mobility.
-            </p>
-        </div>
-
-        <div class="card-blur p-10 rounded-3xl">
-            <h3 class="text-xl font-bold mb-4 text-white">📊 Student Pathways</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">
-                General interest in how students prepare, adapt, and transition into overseas learning environments.
-            </p>
-        </div>
-
-    </div>
-
-    <div class="mt-16 card-blur p-10 rounded-3xl">
-        <h3 class="text-xl font-bold mb-4 text-white">⚠️ Disclaimer</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">
-            This section reflects general informational and research interest only. It does not provide immigration, visa, or educational consulting services, and does not guarantee any admission or outcome.
-        </p>
-    </div>
-
+  </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer id="contact" class="py-24 border-t border-white/5 max-w-7xl mx-auto px-6">
-
-    <div class="grid md:grid-cols-3 gap-16 mb-20">
-
-        <div>
-            <div class="flex items-center gap-3 mb-6">
-                <img src="logo.png" class="h-8 w-auto">
-                <span class="font-bold tracking-tighter text-xl text-white uppercase">OneGrain</span>
-            </div>
-            <p class="text-sm text-gray-500 leading-relaxed">
-                Structured thinking applied to global systems and cross-domain insights.
-            </p>
-        </div>
-
-        <div>
-            <h4 class="text-white font-bold mb-6 uppercase text-xs tracking-[0.2em]">Vancouver HQ</h4>
-            <p class="text-gray-400 text-sm leading-loose">
-                OneGrain Solutions Inc.<br>
-                Vancouver, BC, Canada
-            </p>
-        </div>
-
-        <div>
-            <h4 class="text-white font-bold mb-6 uppercase text-xs tracking-[0.2em]">Contact</h4>
-            <p class="text-gray-400 text-sm leading-loose">
-                nanwu@onegrain.ca
-            </p>
-        </div>
-
+<section class="alt" id="solutions">
+  <div class="wrap">
+    <h2 data-en="What We Do" data-zh="我们做什么">What We Do</h2>
+    <p class="sub" data-en="Three things, in both directions." data-zh="三件事，双向都一样。">Three things, in both directions.</p>
+    <div class="grid">
+      <div class="card">
+        <h3 data-en="Introduce" data-zh="对接">Introduce</h3>
+        <p data-en="We match sellers with buyers across Canada and China." data-zh="为中加两边的买卖双方牵线对接。">We match sellers with buyers across Canada and China.</p>
+      </div>
+      <div class="card">
+        <h3 data-en="Verify" data-zh="核实">Verify</h3>
+        <p data-en="On the ground in Canada, we check the producer, the product and the paperwork before any introduction." data-zh="在加拿大本地，介绍之前先核实生产商、产品与文件。">On the ground in Canada, we check the producer, the product and the paperwork before any introduction.</p>
+      </div>
+      <div class="card">
+        <h3 data-en="Coordinate" data-zh="协调">Coordinate</h3>
+        <p data-en="From first introduction to delivery, we coordinate samples, documents and logistics — in both languages." data-zh="从第一次介绍到交付，全程协调样品、文件与物流，双语沟通。">From first introduction to delivery, we coordinate samples, documents and logistics — in both languages.</p>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="pt-8 border-t border-white/5 text-center text-gray-600 text-[10px] uppercase tracking-widest">
-        © 2026 OneGrain Solutions
+<section>
+  <div class="wrap">
+    <div class="split">
+      <div class="panel">
+        <h3 data-en="For Sellers" data-zh="给卖方">For Sellers</h3>
+        <p class="lead" data-en="You make the product. We find the buyer — on the other side of the Pacific." data-zh="你做产品，我们找买家——在太平洋的另一边。">You make the product. We find the buyer — on the other side of the Pacific.</p>
+        <ul>
+          <li data-en="Commission-only." data-zh="按单抽佣。">Commission-only.</li>
+          <li data-en="No upfront fees." data-zh="没有前期费用。">No upfront fees.</li>
+          <li data-en="Your brand and pricing stay yours." data-zh="品牌和定价还是你的。">Your brand and pricing stay yours.</li>
+          <li data-en="Start with one deal — no long-term lock-in." data-zh="先从一单开始，不用长期绑定。">Start with one deal — no long-term lock-in.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3 data-en="For Buyers" data-zh="给买方">For Buyers</h3>
+        <p class="lead" data-en="You want a reliable source. We connect you directly with the producer." data-zh="你想找可靠的源头，我们帮你直接对接生产商。">You want a reliable source. We connect you directly with the producer.</p>
+        <ul>
+          <li data-en="Canadian producers verified on the ground." data-zh="加拿大生产商本地核实。">Canadian producers verified on the ground.</li>
+          <li data-en="Direct contact with the producer." data-zh="直接对接生产商。">Direct contact with the producer.</li>
+          <li data-en="Samples and documents coordinated end to end." data-zh="样品与文件全程协调。">Samples and documents coordinated end to end.</li>
+          <li data-en="Chinese and English." data-zh="中文沟通。">Chinese and English.</li>
+        </ul>
+      </div>
     </div>
+  </div>
+</section>
 
+<section class="alt">
+  <div class="wrap center">
+    <h2 data-en="What We Work With" data-zh="产品范围">What We Work With</h2>
+    <div class="chips">
+      <span class="chip" data-en="Agri-Food" data-zh="农产品">Agri-Food</span>
+      <span class="chip" data-en="Health Products" data-zh="保健品">Health Products</span>
+      <span class="chip" data-en="Wine &amp; Beverages" data-zh="酒类">Wine &amp; Beverages</span>
+      <span class="chip" data-en="Specialty Foods" data-zh="特色食品">Specialty Foods</span>
+    </div>
+    <p data-en="Sourced directly from producers. No inventory; products ship direct from producer to buyer." data-zh="直接对接生产商。不囤货，厂家直发。">Sourced directly from producers. No inventory; products ship direct from producer to buyer.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 data-en="How It Works" data-zh="怎么做">How It Works</h2>
+    <p class="sub" data-en="Three steps, from first conversation to paid deal." data-zh="三步，从第一次沟通到成交付款。">Three steps, from first conversation to paid deal.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3 data-en="Qualify" data-zh="把关">Qualify</h3>
+        <p data-en="We talk to both sides first — checking the Canadian producer and product, and the buyer's needs." data-zh="我们先跟买卖双方分别沟通，核实加拿大这边的生产商与产品，了解买方的需求。">We talk to both sides first — checking the Canadian producer and product, and the buyer's needs.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3 data-en="Match" data-zh="对接">Match</h3>
+        <p data-en="When there's a fit, we bring both sides together and coordinate samples, documents and terms." data-zh="合适了再把双方拉到一起，协调样品、文件与条款。">When there's a fit, we bring both sides together and coordinate samples, documents and terms.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3 data-en="Close &amp; Deliver" data-zh="成交交付">Close &amp; Deliver</h3>
+        <p data-en="The deal closes and is paid; commission only then." data-zh="成交并付款后，才收佣金。">The deal closes and is paid; commission only then.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt about">
+  <div class="wrap">
+    <h2 data-en="About OneGrain" data-zh="关于我们">About OneGrain</h2>
+    <p data-en="OneGrain Solutions Inc. is a Vancouver-based company connecting businesses in Canada and China. We introduce sellers and buyers, coordinate samples, documents and logistics, and work in both Chinese and English. We earn commission only when a deal closes and is paid." data-zh="OneGrain Solutions Inc. 是一家位于温哥华的公司，连接加拿大与中国的企业。我们负责介绍买卖双方，协调样品、文件与物流，中英双语服务。只有成交并付款后，我们才收佣金。">OneGrain Solutions Inc. is a Vancouver-based company connecting businesses in Canada and China. We introduce sellers and buyers, coordinate samples, documents and logistics, and work in both Chinese and English. We earn commission only when a deal closes and is paid.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2 data-en="Contact" data-zh="联系我们">Contact</h2>
+    <p class="sub" data-en="Tell us what you sell, or what you're looking for — in English or Chinese." data-zh="告诉我们你卖什么，或者你想找什么——中文英文都可以。">Tell us what you sell, or what you're looking for — in English or Chinese.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="label" data-en="Email" data-zh="邮箱">Email</div>
+        <div class="value"><a href="mailto:nanwu@onegrain.ca">nanwu@onegrain.ca</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="label" data-en="Canada" data-zh="加拿大电话">Canada</div>
+        <div class="value"><a href="tel:+15872158008">+1 587-215-8008</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="label" data-en="China" data-zh="中国电话">China</div>
+        <div class="value"><a href="tel:+8615002249572">+86 15002249572</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="label">WeChat</div>
+        <div class="value">15002249572</div>
+      </div>
+      <div class="contact-item">
+        <div class="label" data-en="Address" data-zh="地址">Address</div>
+        <div class="value"><a href="https://maps.google.com/?q=422+Richards+St+Ste+170%2C+Vancouver%2C+BC+V6B+2Z4" target="_blank" rel="noopener">422 Richards St Ste 170, Vancouver, BC V6B 2Z4</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">ONEGRAIN</div>
+    <div data-en="The bridge between Canada and China." data-zh="中加贸易的桥梁。">The bridge between Canada and China.</div>
+    <div>© 2026 OneGrain Solutions Inc.</div>
+  </div>
 </footer>
 
+<script>
+  var TITLES = {
+    en: "OneGrain Solutions | Canada\u2013China Trade Bridge",
+    zh: "OneGrain Solutions | \u4e2d\u52a0\u8d38\u6613\u6865\u6881"
+  };
+  function setLang(lang) {
+    document.documentElement.lang = (lang === "zh") ? "zh-CN" : "en";
+    document.title = TITLES[lang];
+    document.querySelectorAll("[data-en]").forEach(function (el) {
+      el.textContent = (lang === "zh") ? el.dataset.zh : el.dataset.en;
+    });
+    document.getElementById("btn-en").classList.toggle("active", lang === "en");
+    document.getElementById("btn-zh").classList.toggle("active", lang === "zh");
+  }
+</script>
 </body>
 </html>
