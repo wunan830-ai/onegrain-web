@@ -61,10 +61,13 @@
   .step h3{font-size:20px;margin-bottom:10px}
   .step p{color:var(--muted)}
   .about p{max-width:760px;margin:0 auto;text-align:center;color:var(--muted);font-size:18px}
-  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:8px}
-  .contact-item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px;text-align:center}
+  .contact-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:8px}
+  @media (min-width:640px){.contact-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.contact-grid{grid-template-columns:repeat(5,1fr)}}
+  .contact-item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 16px;text-align:center}
   .contact-item .label{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-  .contact-item .value{font-size:17px;font-weight:600;word-break:break-word}
+  .contact-item .value{font-size:15px;font-weight:600;word-break:break-word}
+  .flag{height:14px;width:auto;vertical-align:-2px;margin-right:6px;border-radius:2px}
   footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--muted);font-size:14px}
   footer .fbrand{color:#fff;font-weight:800;letter-spacing:.14em;margin-bottom:6px}
   @media (max-width:640px){h1{font-size:36px}.hero{padding:64px 0 48px}section{padding:52px 0}.nav-links{gap:16px}}
@@ -216,11 +219,11 @@
         <div class="value"><a href="mailto:nanwu@onegrain.ca">nanwu@onegrain.ca</a></div>
       </div>
       <div class="contact-item">
-        <div class="label" data-en="Canada" data-zh="加拿大电话">Canada</div>
+        <div class="label"><img class="flag" src="https://flagcdn.com/w40/ca.png" alt=""><span data-en="Canada" data-zh="加拿大电话">Canada</span></div>
         <div class="value"><a href="tel:+15872158008">+1 587-215-8008</a></div>
       </div>
       <div class="contact-item">
-        <div class="label" data-en="China" data-zh="中国电话">China</div>
+        <div class="label"><img class="flag" src="https://flagcdn.com/w40/cn.png" alt=""><span data-en="China" data-zh="中国电话">China</span></div>
         <div class="value"><a href="tel:+8615002249572">+86 15002249572</a></div>
       </div>
       <div class="contact-item">
